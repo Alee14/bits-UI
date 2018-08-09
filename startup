@@ -1,0 +1,6 @@
+local version = "1.0 Alpha 1"
+
+term.clear()
+term.setCursorPos(1,1)
+print("Starting up bitsOS ".. version .."...")
+sleep(3)
