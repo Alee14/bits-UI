@@ -7,4 +7,49 @@ term.clear()
 term.setCursorPos(1,1)
 print("Starting up bits-UI ".. version .."...")
 sleep(3)
+
+if term.isColor() then
+    print("[ OK ] Advanced Computer is detected...")
+else
+    print("[ ERROR ] You need a advanced computer in order to make the UI functional...")
+    sleep(3)
+    os.shutdown()
+end
+
+sleep(3)
+
+if fs.exists(desktop) then
+    print("[ OK ] Desktop has been found...")
+else
+    print("[ ERROR ] Desktop cannot be found...")
+    sleep(3)
+    os.shutdown()
+end
+
+sleep(3)
+
+if fs.exists("/home") then
+    print("[ OK ] Home has been found...")
+else
+    fs.makeDir("/home")
+    print("[ OK ] Home directory has been created...")
+end
+
+sleep(3)
+
+if fs.exists("/system/bitUI.config") then
+    print("[ OK ] Config has been found...")
+else
+    file = io.open("/system/bitUI.config", "w")
+    file:close()
+
+    print("[ INFO ] Config has not been found!")
+    print("[ INFO ] You will be sent to the OOBE setup...")
+end
+
+sleep(3)
+
+print("[ INFO ] Boot sequence is completed...")
+
+sleep(3)
 shell.run(desktop)
