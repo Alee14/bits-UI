@@ -37,6 +37,8 @@ function bootloaderInput()
         term.setCursorPos(1,2)
     else
         print("[ERROR] Invalid number.")
+        sleep(2)
+        clear()
         bootloader()
         bootloaderInput()
     end
