@@ -1,7 +1,7 @@
 
 -- bits-UI: An operating system for ComputerCraft. Licensed with GPL-3.0.
 
-local version = "1.0 Alpha 1"
+local version = "1.0 Alpha 2"
 local desktop = "/system/desktop.lua"
 
 term.clear()

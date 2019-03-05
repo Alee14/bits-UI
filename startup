@@ -28,9 +28,16 @@ function bootloaderInput()
         shell.run("/system/boot.lua")
     elseif input == "2" then
         clear()
+        if fs.exists("dev_mode") then
+            print("You are running developer mode! You cannot update bit-UI.")
+            clear()
+            bootloader()
+            bootloaderInput()
+        else
         print("Running updater...")
         sleep(3)
         shell.run("pastebin", "run", "7XY80hfG")
+        end
     elseif input == "3" then
         clear()
         print(os.version())
