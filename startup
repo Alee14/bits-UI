@@ -40,8 +40,8 @@ sleep(3)
 if fs.exists("/system/bitUI.config") then
     print("[OK] Config has been found...")
 else
-    file = io.open("/system/bitUI.config", "w")
-    file:close()
+    config = io.open("/system/bitUI.config", "w")
+    config:close()
 
     print("[INFO] Config has not been found!")
     print("[INFO] You will be sent to the OOBE setup...")
