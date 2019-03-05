@@ -30,6 +30,7 @@ function bootloaderInput()
         clear()
         if fs.exists("dev_mode") then
             print("You are running developer mode! You cannot update bit-UI.")
+            sleep(3)
             clear()
             bootloader()
             bootloaderInput()
