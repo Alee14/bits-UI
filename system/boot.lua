@@ -56,11 +56,11 @@ end
 
 sleep(3)
 
-if fs.exists("/system/bitUI.config") then
+if fs.exists("/home/.config") then
     term.setTextColor(colors.green)
     print("[OK] Config has been found...")
 else
-    config = io.open("/system/bitUI.config", "w")
+    config = io.open("/home/.config", "w")
     config:close()
     term.setTextColor(colors.blue)
     print("[INFO] Config has not been found!")
