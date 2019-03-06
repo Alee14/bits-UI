@@ -8,6 +8,7 @@ The programs/apis I used for bits-UI.
 - NPaintPro by NitrogenFingers
 - Ink by oeed
 - LuaIDE by GravityScore
+- FireWolf by GravityScore and 1lann
 - Mouse File Browser by Stiepen irc(Kilobyte), Cruor and BigSHinyToys
 - fLib by NDFJay
 - Sha256 by CompuTech

@@ -13,6 +13,10 @@
     GNU General Public License for more details.
 ]]--
 
+--local passwd = read()
+--local passPath = "/etc/passwd.pwd"
+os.loadAPI("/system/apis/sha256.lua")
+
 term.clear()
 term.setCursorPos(1,1)
 term.setTextColor(colors.white)
@@ -27,7 +31,13 @@ else
     print("[ERROR] Unable to find README.txt...")
 end
 
-print("Welcome to the setup!")
+if fs.exists("/system/skel/.background") then
+    shell.run("copy", "/system/skel/.background", "/home")
+else
+    print("[ERROR] Unable to find the background...")
+end
 
-sleep(3)
+--print("Welcome to the setup! This feature will be not be in Alpha 2")
+
+sleep(1)
 shell.run("/system/desktop.lua")

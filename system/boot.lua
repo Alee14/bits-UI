@@ -20,7 +20,7 @@ term.clear()
 term.setCursorPos(1,1)
 
 print("Starting up bits-UI ".. version .."...")
-sleep(3)
+sleep(2)
 
 if term.isColor() then
     term.setTextColor(colors.green)
@@ -31,7 +31,7 @@ else
     os.shutdown()
 end
 
-sleep(3)
+sleep(2)
 
 if fs.exists(desktop) then
     term.setTextColor(colors.green)
@@ -43,7 +43,7 @@ else
     os.shutdown()
 end
 
-sleep(3)
+sleep(2)
 
 if fs.exists("/home") then
     term.setTextColor(colors.green)
@@ -54,7 +54,16 @@ else
     print("[OK] Home directory has been created...")
 end
 
-sleep(3)
+if fs.exists("/etc") then
+    term.setTextColor(colors.green)
+    print("[OK] Etc has been found...")
+else
+    fs.makeDir("/etc")
+    term.setTextColor(colors.green)
+    print("[OK] Etc directory has been created...")
+end
+
+sleep(2)
 
 if fs.exists("/home/.config") then
     term.setTextColor(colors.green)
@@ -69,9 +78,9 @@ else
     shell.run("/system/post-setup.lua")
 end
 
-sleep(3)
+sleep(2)
 term.setTextColor(colors.green)
 print("[DONE] Boot sequence is completed...")
 term.setTextColor(colors.white)
-sleep(3)
+sleep(2)
 shell.run(desktop)

@@ -1,2 +1,1 @@
--- It redirects to the startup lua file if it's running a older version of CraftOS.
-shell.run("startup.lua")
+shell.run("startup.lua") -- It redirects to the startup lua file if it's running a older version of CraftOS.

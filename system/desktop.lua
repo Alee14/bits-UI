@@ -13,24 +13,36 @@
     GNU General Public License for more details.
 ]]--
 
+os.loadAPI("/system/apis/flib.lua")
+local backgroundColour = 32768
+local backgroundImage = "/home/.background"
+local panelColour = 8192
+local appTitle = "[Apps]"
+
 function titleBar()  	
     local time = os.time()
     local formattedTime = textutils.formatTime(time, false)
     term.setCursorPos(1,1)
-    term.setBackgroundColor(colors.green)
+    term.setBackgroundColor(panelColour)
     term.setTextColor(1)
     term.clearLine()
     term.setCursorPos(2, 1)
-    print("[Apps]")
+    print(appTitle)
     term.setCursorPos(44, 1)
     print(formattedTime)
   end
 
 function drawDesktop()
-    term.setBackgroundColor(colors.black)
+    term.setBackgroundColor(backgroundColour)
     term.clear()
+    bground = paintutils.loadImage(backgroundImage)
+    paintutils.drawImage(bground,1,1)
     titleBar()
 end
+--[[
+    if fs.exists("/programs") then
+end
+]]
 
 drawDesktop()
 

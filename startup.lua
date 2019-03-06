@@ -14,18 +14,21 @@
 
 ]]--
 local boot = "/system/boot.lua"
+local bublcfg = "/boot/bubl.cfg"
 local allowUpdate = true
 
 function bootloader()
     term.setCursorPos(1,1)
     print("Welcome to the BUBL boot loader!\n")
-    term.setCursorPos(1,3)
-    print("1. Boot bits-UI\n")
+    term.setCursorPos(1,2)
+    print("Version 0.2")
     term.setCursorPos(1,4)
-    print("2. Update bits-UI\n")
+    print("1. Boot bits-UI\n")
     term.setCursorPos(1,5)
+    print("2. Update bits-UI\n")
+    term.setCursorPos(1,6)
     print("3. Boot CraftOS\n")
-    term.setCursorPos(1,7)
+    term.setCursorPos(1,8)
     term.write("> ")
 end
 
@@ -40,7 +43,20 @@ function bootloaderInput()
 
     if input == "1" then
         clear()
-        shell.run("/system/boot.lua")
+        print("Loading bits-UI...")
+        sleep(3)
+        clear()
+        if fs.exists(boot) then
+            shell.run("/system/boot.lua")
+        else
+            clear()
+            term.setTextColor(colors.red)
+            print("[ERROR] System has been halted.")
+            term.setCursorPos(1,2)
+            print("Details: Cannot find boot.lua")  
+            sleep(3)
+            os.shutdown()  
+        end
     elseif input == "2" then
         clear()
         if allowUpdate == false then
@@ -50,14 +66,16 @@ function bootloaderInput()
             bootloader()
             bootloaderInput()
         else
-        print("Running updater...")
+        print("Running the updater...")
         sleep(3)
         shell.run("pastebin", "run", "7XY80hfG")
         end
     elseif input == "3" then
         clear()
+        term.setTextColor(16)
         print(os.version())
         term.setCursorPos(1,2)
+        term.setTextColor(1)
     else
         print("[ERROR] Invalid number.")
         sleep(2)
@@ -67,23 +85,19 @@ function bootloaderInput()
     end
     
 end
-
 clear()
-
-if fs.exists(boot) then
-    term.setTextColor(colors.green)
-    print("Boot detected!")
+print("Welcome to BUBL!")
+if fs.exists(bublcfg) then
     sleep(1)
+    clear()
+    bootloader()
+    bootloaderInput()
 else
     clear()
     term.setTextColor(colors.red)
-    print("[ERROR] System has been halted.")
+    print("[ERROR] System cannot find bubl.cfg...")
     term.setCursorPos(1,2)
-    print("Details: Cannot find boot.lua")  
+    print("System halted...")  
     sleep(3)
     os.shutdown()  
 end
-
-clear()
-bootloader()
-bootloaderInput()
