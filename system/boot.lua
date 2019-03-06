@@ -1,5 +1,17 @@
+--[[
+    bits-UI Boot: A boot script for bits-UI.
+    Copyright (C) 2019 Alee14
 
--- bits-UI: An operating system for ComputerCraft. Licensed with GPL-3.0.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+]]--
 
 local version = "1.0 Alpha 2"
 local desktop = "/system/desktop.lua"
@@ -53,6 +65,8 @@ else
     term.setTextColor(colors.blue)
     print("[INFO] Config has not been found!")
     print("[INFO] You will be sent to the OOBE setup...")
+    sleep(3)
+    shell.run("/system/setup.lua")
 end
 
 sleep(3)
