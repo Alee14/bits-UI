@@ -14,6 +14,7 @@
 
 ]]--
 local boot = "/system/boot.lua"
+local allowUpdate = true
 
 function bootloader()
     term.setCursorPos(1,1)
@@ -42,8 +43,8 @@ function bootloaderInput()
         shell.run("/system/boot.lua")
     elseif input == "2" then
         clear()
-        if fs.exists("dev_mode") then
-            print("You are running developer mode! You cannot update bit-UI.")
+        if allowUpdate == false then
+            print("You have set updating to false!\n Please set updating to true if you want to update...")
             sleep(3)
             clear()
             bootloader()

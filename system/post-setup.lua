@@ -1,5 +1,5 @@
 --[[
-    bits-UI Setup: After installation setup for bits-UI
+    bits-UI Setup: Post installation setup for bits-UI
     Copyright (C) 2019 Alee14
 
     This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,10 @@ if fs.exists("/system/skel/README.txt") then
 else
     print("[ERROR] Unable to find README.txt...")
 end
+
+fs.makeDir("/home/Documents")
+fs.makeDir("/home/Downloads")
+fs.makeDir("/home/Pictures")
 
 print("Welcome to the setup!")
 

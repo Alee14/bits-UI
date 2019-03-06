@@ -64,9 +64,9 @@ else
     config:close()
     term.setTextColor(colors.blue)
     print("[INFO] Config has not been found!")
-    print("[INFO] You will be sent to the OOBE setup...")
+    print("[INFO] You will be sent to the post installation setup...")
     sleep(3)
-    shell.run("/system/setup.lua")
+    shell.run("/system/post-setup.lua")
 end
 
 sleep(3)
