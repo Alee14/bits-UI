@@ -65,7 +65,7 @@ function bootloaderInput()
     elseif input == "2" then
         clear()
         if devMode == true then
-            print("You have developer mode set to true! Which means that you cannot update, you must use github to update.")
+            print("Developer mode is set to true! Which means that you cannot update, you must use github to update.")
             sleep(3)
             clear()
             bootloader()
@@ -94,6 +94,11 @@ clear()
 print("Welcome to BUBL!")
 if fs.exists(bublcfg) then
     sleep(1)
+    if fs.exists("/.git") then
+        devMode = true
+        else
+        devMode = false
+        end
     clear()
     bootloader()
     bootloaderInput()
