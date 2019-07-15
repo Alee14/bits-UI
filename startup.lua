@@ -32,8 +32,10 @@ function bootloader()
     term.setCursorPos(1,5)
     print("2. Update bits-UI\n")
     term.setCursorPos(1,6)
-    print("3. Boot CraftOS\n")
-    term.setCursorPos(1,8)
+    print("3. Recovery Mode\n")
+    term.setCursorPos(1,7)
+    print("4. Boot CraftOS\n")
+    term.setCursorPos(1,9)
     term.write("> ")
 end
 
@@ -76,6 +78,11 @@ function bootloaderInput()
         shell.run("pastebin", "run", "7XY80hfG")
         end
     elseif input == "3" then
+        clear()
+        print("Running Recovery Mode...")
+        sleep(2)
+        shell.run("/system/recovery/main.lua")
+    elseif input == "4" then
         clear()
         term.setTextColor(16)
         print(os.version())

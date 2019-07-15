@@ -38,12 +38,18 @@ print("Welcome to the bits-UI Post Setup!")
 sleep(2)
 print("Please enter your password.")
 print("(Don't set your real password in servers.)")
+
 local passPath = "/etc/passwd.pwd"
-local passwd = read(" ")
-local insertPasswd = fs.open(passPath, "a")
-insertPasswd.writeLine(passwd)
-insertPasswd.close()
-print("Thanks, I will save that.")
+if fs.exists(passPath) then
+    print("[INFO] Password file exists! Skipping.")
+    sleep(2)
+else
+    local passwd = read(" ")
+    local insertPasswd = fs.open(passPath, "a")
+    insertPasswd.writeLine(passwd)
+    insertPasswd.close()
+    print("Thanks, I will save that.")
+end
 
 sleep(1)
 shell.run("/system/desktop.lua")

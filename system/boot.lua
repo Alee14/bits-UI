@@ -80,7 +80,7 @@ end
 
 sleep(2)
 term.setTextColor(colors.green)
-print("[DONE] Boot sequence is completed...")
+print("[DONE] Boot sequence has been completed...")
 term.setTextColor(colors.white)
 sleep(2)
 shell.run(desktop)
