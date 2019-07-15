@@ -15,13 +15,18 @@
 ]]--
 local boot = "/system/boot.lua"
 local bublcfg = "/boot/bubl.cfg"
-local allowUpdate = true
+local bVersion = "0.2"
+local devMode = false
 
 function bootloader()
     term.setCursorPos(1,1)
     print("Welcome to the BUBL boot loader!\n")
     term.setCursorPos(1,2)
-    print("Version 0.2")
+    if fs.exists("/.git") then
+    print("Version ".. bVersion .. "-GIT")
+    else
+    print("Version ".. bVersion)
+    end
     term.setCursorPos(1,4)
     print("1. Boot bits-UI\n")
     term.setCursorPos(1,5)
@@ -59,8 +64,8 @@ function bootloaderInput()
         end
     elseif input == "2" then
         clear()
-        if allowUpdate == false then
-            print("You have set updating to false!\n Please set updating to true if you want to update...")
+        if devMode == true then
+            print("You have developer mode set to true! Which means that you cannot update, you must use github to update.")
             sleep(3)
             clear()
             bootloader()

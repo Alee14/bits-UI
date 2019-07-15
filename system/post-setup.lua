@@ -12,9 +12,6 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 ]]--
-
---local passwd = read()
---local passPath = "/etc/passwd.pwd"
 os.loadAPI("/system/apis/sha256.lua")
 
 term.clear()
@@ -37,7 +34,16 @@ else
     print("[ERROR] Unable to find the background...")
 end
 
---print("Welcome to the setup! This feature will be not be in Alpha 2")
+print("Welcome to the bits-UI Post Setup!")
+sleep(2)
+print("Please enter your password.")
+print("(Don't set your real password in servers.)")
+local passPath = "/etc/passwd.pwd"
+local passwd = read(" ")
+local insertPasswd = fs.open(passPath, "a")
+insertPasswd.writeLine(passwd)
+insertPasswd.close()
+print("Thanks, I will save that.")
 
 sleep(1)
 shell.run("/system/desktop.lua")
