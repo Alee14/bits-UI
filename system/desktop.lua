@@ -19,7 +19,7 @@ local backgroundImage = "/home/.background"
 local panelColour = 8192
 local appTitle = "[Apps]"
 
-function titleBar()  	
+function drawPanel()  	
     local time = os.time()
     local formattedTime = textutils.formatTime(time, false)
     term.setCursorPos(1,1)
@@ -37,12 +37,14 @@ function drawDesktop()
     term.clear()
     bground = paintutils.loadImage(backgroundImage)
     paintutils.drawImage(bground,1,1)
-    titleBar()
+    drawPanel()
 end
 --[[
     if fs.exists("/programs") then
 end
 ]]
+
+-- Initialize Desktop
 
 drawDesktop()
 
