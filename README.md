@@ -11,6 +11,7 @@ The programs/apis I used for bits-UI.
 - LuaIDE by GravityScore
 - FireWolf by GravityScore and 1lann
 - Mouse File Browser by Stiepen irc(Kilobyte), Cruor and BigSHinyToys
+- Enchat 3 by LDDestroier
 - fLib by NDFJay
 - Sha256 by Anavrins
 - JSON API by ElvishJerricco
