@@ -12,7 +12,7 @@ The programs/apis I used for bits-UI.
 - FireWolf by GravityScore and 1lann
 - Mouse File Browser by Stiepen irc(Kilobyte), Cruor and BigSHinyToys
 - fLib by NDFJay
-- Sha256 by CompuTech
+- Sha256 by Anavrins
 - JSON API by ElvishJerricco
 
 # Installation

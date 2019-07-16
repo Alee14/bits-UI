@@ -24,4 +24,6 @@ if input == "reset" then
     shell.run("/system/recovery/reset.lua")
 elseif input == "transfer" then
     shell.run("/system/recovery/transfer.lua")
+else
+    shell.run("/startup.lua")
 end

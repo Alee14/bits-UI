@@ -13,6 +13,8 @@
     GNU General Public License for more details.
 ]]--
 os.loadAPI("/system/apis/sha256.lua")
+os.loadAPI("/system/apis/json.lua")
+local config = "/home/.config"
 
 term.clear()
 term.setCursorPos(1,1)
@@ -37,7 +39,7 @@ end
 print("Welcome to the bits-UI Post Setup!")
 sleep(2)
 print("Please enter your password.")
-print("(Don't set your real password in servers.)")
+--print("(Don't set your real password in servers.)")
 
 local passPath = "/etc/passwd.pwd"
 if fs.exists(passPath) then
@@ -46,7 +48,8 @@ if fs.exists(passPath) then
 else
     local passwd = read(" ")
     local insertPasswd = fs.open(passPath, "a")
-    insertPasswd.writeLine(passwd)
+    local hashedString = sha256.pbkdf2(passwd, 2, 32):toHex()
+    insertPasswd.writeLine(hashedString)
     insertPasswd.close()
     print("Thanks, I will save that.")
 end

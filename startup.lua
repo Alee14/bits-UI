@@ -51,7 +51,7 @@ function bootloaderInput()
     if input == "1" then
         clear()
         print("Loading bits-UI...")
-        sleep(3)
+        sleep(1)
         clear()
         if fs.exists(boot) then
             shell.run("/system/boot.lua")
@@ -61,26 +61,26 @@ function bootloaderInput()
             print("[ERROR] System has been halted.")
             term.setCursorPos(1,2)
             print("Details: Cannot find boot.lua")  
-            sleep(3)
+            sleep(2)
             os.shutdown()  
         end
     elseif input == "2" then
         clear()
         if devMode == true then
-            print("Developer mode is set to true! Which means that you cannot update, you must use github to update.")
-            sleep(3)
+            print("Developer mode is set to true!\n Which means that you cannot update, you must use github to update.")
+            sleep(2)
             clear()
             bootloader()
             bootloaderInput()
         else
         print("Running the updater...")
-        sleep(3)
+        sleep(1)
         shell.run("pastebin", "run", "7XY80hfG")
         end
     elseif input == "3" then
         clear()
         print("Running Recovery Mode...")
-        sleep(2)
+        sleep(1)
         shell.run("/system/recovery/main.lua")
     elseif input == "4" then
         clear()
@@ -90,7 +90,7 @@ function bootloaderInput()
         term.setTextColor(1)
     else
         print("[ERROR] Invalid number.")
-        sleep(2)
+        sleep(1)
         clear()
         bootloader()
         bootloaderInput()
@@ -115,6 +115,6 @@ else
     print("[ERROR] System cannot find bubl.cfg...")
     term.setCursorPos(1,2)
     print("System halted...")  
-    sleep(3)
+    sleep(2)
     os.shutdown()  
 end

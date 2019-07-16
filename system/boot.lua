@@ -20,7 +20,7 @@ term.clear()
 term.setCursorPos(1,1)
 
 print("Starting up bits-UI ".. version .."...")
-sleep(2)
+sleep(1)
 
 if term.isColor() then
     term.setTextColor(colors.green)
@@ -31,7 +31,7 @@ else
     os.shutdown()
 end
 
-sleep(2)
+sleep(1)
 
 if fs.exists(desktop) then
     term.setTextColor(colors.green)
@@ -39,11 +39,11 @@ if fs.exists(desktop) then
 else
     term.setTextColor(colors.red)
     print("[ERROR] Desktop cannot be found...")
-    sleep(3)
+    sleep(2)
     os.shutdown()
 end
 
-sleep(2)
+sleep(1)
 
 if fs.exists("/home") then
     term.setTextColor(colors.green)
@@ -63,7 +63,7 @@ else
     print("[OK] Etc directory has been created...")
 end
 
-sleep(2)
+sleep(1)
 
 if fs.exists("/home/.config") then
     term.setTextColor(colors.green)
@@ -74,13 +74,13 @@ else
     term.setTextColor(colors.blue)
     print("[INFO] Config has not been found!")
     print("[INFO] You will be sent to the post installation setup...")
-    sleep(3)
+    sleep(2)
     shell.run("/system/post-setup.lua")
 end
 
-sleep(2)
+sleep(1)
 term.setTextColor(colors.green)
 print("[DONE] Boot sequence has been completed...")
 term.setTextColor(colors.white)
-sleep(2)
+sleep(1)
 shell.run(desktop)
