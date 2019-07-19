@@ -34,7 +34,7 @@ function bootloader()
     term.setCursorPos(1,6)
     print("3. Recovery Mode\n")
     term.setCursorPos(1,7)
-    print("4. Boot CraftOS\n")
+    print("4. Boot CraftOS with MBS\n")
     term.setCursorPos(1,9)
     term.write("> ")
 end
@@ -84,8 +84,10 @@ function bootloaderInput()
         shell.run("/system/recovery/main.lua")
     elseif input == "4" then
         clear()
+        sleep(1)
+        assert(loadfile("/.mbs/bin/mbs.lua", _ENV))('startup')
         term.setTextColor(16)
-        print(os.version())
+        print(os.version() .. " (+MBS)")
         term.setCursorPos(1,2)
         term.setTextColor(1)
     else
@@ -99,22 +101,12 @@ function bootloaderInput()
 end
 clear()
 print("Welcome to BUBL!")
-if fs.exists(bublcfg) then
-    sleep(1)
-    if fs.exists("/.git") then
-        devMode = true
-        else
-        devMode = false
-        end
-    clear()
-    bootloader()
-    bootloaderInput()
+sleep(1)
+if fs.exists("/.git") then
+    devMode = true
 else
-    clear()
-    term.setTextColor(colors.red)
-    print("[ERROR] System cannot find bubl.cfg...")
-    term.setCursorPos(1,2)
-    print("System halted...")  
-    sleep(2)
-    os.shutdown()  
+    devMode = false
 end
+clear()
+bootloader()
+bootloaderInput()

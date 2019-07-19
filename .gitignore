@@ -3,3 +3,5 @@ etc/
 .err-logs/
 kst/
 .enchat
+.shell_history
+.lua_history
