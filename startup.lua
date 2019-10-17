@@ -35,7 +35,9 @@ function bootloader()
     print("3. Recovery Mode\n")
     term.setCursorPos(1,7)
     print("4. Boot CraftOS with MBS\n")
-    term.setCursorPos(1,9)
+    term.setCursorPos(1,8)
+    print("5. Shutdown\n")
+    term.setCursorPos(1,10)
     term.write("> ")
 end
 
@@ -90,6 +92,8 @@ function bootloaderInput()
         print(os.version() .. " (+MBS)")
         term.setCursorPos(1,2)
         term.setTextColor(1)
+    elseif input == "5" then
+        os.shutdown();
     else
         print("[ERROR] Invalid number.")
         sleep(1)
