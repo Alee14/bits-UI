@@ -23,7 +23,7 @@ function bootloader()
     print("Welcome to the BUBL boot loader!\n")
     term.setCursorPos(1,2)
     if fs.exists("/.git") then
-    print("Version ".. bVersion .. "-GIT")
+    print("Version ".. bVersion .. "-DEV")
     else
     print("Version ".. bVersion)
     end

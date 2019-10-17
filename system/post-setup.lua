@@ -20,22 +20,6 @@ term.clear()
 term.setCursorPos(1,1)
 term.setTextColor(colors.white)
 
-fs.makeDir("/home/Documents")
-fs.makeDir("/home/Downloads")
-fs.makeDir("/home/Pictures")
-
-if fs.exists("/system/skel/README.txt") then
-    shell.run("copy", "/system/skel/README.txt", "/home/Documents")
-else
-    print("[ERROR] Unable to find README.txt...")
-end
-
-if fs.exists("/system/skel/.background") then
-    shell.run("copy", "/system/skel/.background", "/home")
-else
-    print("[ERROR] Unable to find the background...")
-end
-
 print("Welcome to the bits-UI Post Setup!")
 sleep(2)
 print("Please enter your password.")
@@ -53,6 +37,28 @@ else
     insertPasswd.close()
     print("Thanks, I will save that.")
 end
+sleep(3)
+term.clear()
+term.setCursorPos(1,1)
+term.setTextColor(colors.white)
+print("Copying files to local user.")
 
+fs.makeDir("/home/Documents")
+fs.makeDir("/home/Downloads")
+fs.makeDir("/home/Pictures")
+
+if fs.exists("/system/skel/README.txt") then
+    shell.run("copy", "/system/skel/README.txt", "/home/Documents")
+else
+    print("[ERROR] Unable to find README.txt...")
+end
+
+if fs.exists("/system/skel/.background") then
+    shell.run("copy", "/system/skel/.background", "/home")
+else
+    print("[ERROR] Unable to find the background...")
+end
 sleep(1)
+print("Finished copying files.")
+sleep(2)
 shell.run("/system/desktop.lua")
