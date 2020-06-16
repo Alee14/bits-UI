@@ -5,6 +5,7 @@ Feel free to contribute to this project!
 # Credits
 The programs/apis I used for bits-UI.
 
+- CCBoot by AdrUlb
 - NPaintPro by NitrogenFingers
 - Ink by oeed
 - Krist Wallet by 3d6
