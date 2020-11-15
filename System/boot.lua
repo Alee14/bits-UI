@@ -22,6 +22,10 @@ term.setCursorPos(1,1)
 print("Starting up bits-UI ".. version .."...")
 sleep(1)
 
+print(_HOST)
+
+sleep(1)
+
 if term.isColor() then
     term.setTextColor(colors.green)
     print("[OK] Advanced Computer is detected...")
