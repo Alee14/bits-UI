@@ -263,7 +263,7 @@ local function pretty(t, n)
   local width, height = term.getSize()
   local fit_height = settings.get("mbs.lua.pretty_height", true)
   if type(fit_height) == "number" then height = fit_height
-  elseif fit_height == false then height = 1/0 end
+  elseif fit_height == false then height = 1 / 0 end
   return pretty_impl(t, {}, width, height - 2, "", n)
 end
 
@@ -271,6 +271,7 @@ local running = true
 local history = {}
 local counter = 1
 local output = {}
+
 
 local environment = setmetatable({
   exit = setmetatable({}, {
@@ -282,6 +283,42 @@ local environment = setmetatable({
 
   out = output,
 }, { __index = _ENV })
+
+
+local function process_auto_run_file(folderPath, file)
+  if string.sub( file, 1, 1 ) == "." then return end
+
+  local path = fs.combine(folderPath, file)
+  if fs.isDir( path ) then return end
+
+  local func, err = loadfile(path, nil, _ENV)
+  if not func then
+    printError(err)
+    return
+  end
+
+  local ok, result
+  if settings.get("mbs.lua.traceback", true) then
+    ok, result = stack_trace.xpcall_with(func)
+  else
+    ok, result = pcall(func)
+  end
+  if not ok then
+    printError(result)
+  end
+end
+
+local function load_auto_run_folder(folderPath)
+  if fs.exists( folderPath ) and fs.isDir( folderPath ) then
+    local files = fs.list( folderPath )
+    for _, file in ipairs( files ) do
+      process_auto_run_file(folderPath, file)
+    end
+  end
+end
+
+load_auto_run_folder("/rom/lua_autorun")
+load_auto_run_folder("/lua_autorun")
 
 local autocomplete = nil
 if not settings or settings.get("lua.autocomplete") then

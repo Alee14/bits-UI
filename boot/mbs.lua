@@ -1,4 +1,4 @@
-assert(loadfile("/.mbs/bin/mbs.lua", _ENV))('startup')
+assert(loadfile("mbs.lua", _ENV))('startup', "mbs.lua")
 term.setTextColor(16)
 print(os.version() .. " (+MBS)")
 term.setCursorPos(1,2)
