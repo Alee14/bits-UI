@@ -1,12 +1,9 @@
 -- SHA-256, HMAC and PBKDF2 functions in ComputerCraft
 -- By Anavrins
--- For help and details, you can PM me on the CC forums
--- http://www.computercraft.info/forums2/index.php?/user/12870-anavrins
--- You may use this code in your projects without asking me, as long as credit is given
-
+-- MIT License
 -- Pastebin: https://pastebin.com/6UV4qfNF
 -- Usage: https://pastebin.com/q2SQ7eRg
--- Last update: May 13, 2019
+-- Last updated: March 27 2020
 
 local mod32 = 2^32
 local band    = bit32 and bit32.band or bit.band
@@ -20,7 +17,7 @@ local function rrotate(n, b)
 	local f = s%1
 	return (s-f) + f*mod32
 end
- local function brshift(int, by) -- Thanks bit32 for bad rshift
+local function brshift(int, by)
 	local s = int / (2^by)
 	return s - s%1
 end
@@ -74,16 +71,16 @@ end
 local function digestblock(w, C)
 	for j = 17, 64 do
 		local v = w[j-15]
-		local s0 = bxor(bxor(rrotate(w[j-15], 7), rrotate(w[j-15], 18)), brshift(w[j-15], 3))
-		local s1 = bxor(bxor(rrotate(w[j-2], 17), rrotate(w[j-2], 19)), brshift(w[j-2], 10))
+		local s0 = bxor(rrotate(w[j-15], 7), rrotate(w[j-15], 18), brshift(w[j-15], 3))
+		local s1 = bxor(rrotate(w[j-2], 17), rrotate(w[j-2], 19),brshift(w[j-2], 10))
 		w[j] = (w[j-16] + s0 + w[j-7] + s1)%mod32
 	end
 	local a, b, c, d, e, f, g, h = upack(C)
 	for j = 1, 64 do
-		local S1 = bxor(bxor(rrotate(e, 6), rrotate(e, 11)), rrotate(e, 25))
+		local S1 = bxor(rrotate(e, 6), rrotate(e, 11), rrotate(e, 25))
 		local ch = bxor(band(e, f), band(bnot(e), g))
 		local temp1 = (h + S1 + ch + K[j] + w[j])%mod32
-		local S0 = bxor(bxor(rrotate(a, 2), rrotate(a, 13)), rrotate(a, 22))
+		local S0 = bxor(rrotate(a, 2), rrotate(a, 13), rrotate(a, 22))
 		local maj = bxor(bxor(band(a, b), band(a, c)), band(b, c))
 		local temp2 = (S0 + maj)%mod32
 		h, g, f, e, d, c, b, a = g, f, e, (d+temp1)%mod32, c, b, a, (temp1+temp2)%mod32
@@ -115,7 +112,7 @@ local mt = {
 	}
 }
 
-	function toBytes(t, n)
+local function toBytes(t, n)
 	local b = {}
 	for i = 1, n do
 		b[(i-1)*4+1] = band(brshift(t[i], 24), 0xFF)
@@ -126,7 +123,7 @@ local mt = {
 	return setmetatable(b, mt)
 end
 
-	function digest(data)
+local function digest(data)
 	local data = data or ""
 	data = type(data) == "table" and {upack(data)} or {tostring(data):byte(1,-1)}
 
@@ -136,7 +133,7 @@ end
 	return toBytes(C, 8)
 end
 
-	function hmac(data, key)
+local function hmac(data, key)
 	local data = type(data) == "table" and {upack(data)} or {tostring(data):byte(1,-1)}
 	local key = type(key) == "table" and {upack(key)} or {tostring(key):byte(1,-1)}
 
@@ -167,7 +164,7 @@ end
 	return digest(padded_key)
 end
 
-	function pbkdf2(pass, salt, iter, dklen)
+local function pbkdf2(pass, salt, iter, dklen)
 	local salt = type(salt) == "table" and salt or {tostring(salt):byte(1,-1)}
 	local hashlen = 32
 	local dklen = dklen or 32
