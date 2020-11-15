@@ -1,6 +1,6 @@
 --[[ 
     bits-UI Reset Script: A script that will wipe the system to the default factory settings.
-    Copyright (C) 2019 Alee14
+    Copyright (C) 2020 Alee14
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,5 +32,5 @@ if input == "y" then
     sleep(3)
     os.reboot()
 else
-    shell.run("startup.lua")
+    os.reboot()
 end

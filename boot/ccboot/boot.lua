@@ -1,6 +1,6 @@
 if os.ccboot then
 	term.setTextColor(colors.red);
-	print("Insufficient memory.");
+	print("Please reboot if you want to use this bootloader.");
 	error();
 end;
 

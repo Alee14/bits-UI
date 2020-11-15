@@ -1,6 +1,6 @@
 --[[ 
     bits-UI Update: A boot loader for bits-UI
-    Copyright (C) 2019 Alee14
+    Copyright (C) 2020 Alee14
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -13,14 +13,15 @@
     GNU General Public License for more details.
 
 ]]--
-local devMode = false
+local gitMode = false
 if fs.exists("/.git") then
-    devMode = true
+    gitMode = true
 else
-    devMode = false
+    gitMode = false
 end
-if devMode == true then
-    print("Developer mode is set to true!\nWhich means that you cannot update, you must use github to update.")
+if gitMode == true then
+    print("NOTICE: Git mode is set to true!\n\nWhich means that you cannot update, you must use Git to update.\n")
+    print("Args: \"git pull\"")
     sleep(2)
     os.reboot()
 else

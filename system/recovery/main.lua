@@ -1,6 +1,6 @@
 --[[ 
     bits-UI Recovery Script: A script that's going to show you to either reset the computer or transfer files.
-    Copyright (C) 2019 Alee14
+    Copyright (C) 2020 Alee14
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,5 +25,5 @@ if input == "reset" then
 elseif input == "transfer" then
     shell.run("/system/recovery/transfer.lua")
 else
-    shell.run("/startup.lua")
+    os.reboot()
 end
