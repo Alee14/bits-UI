@@ -5,3 +5,4 @@ kst/
 .enchat
 .shell_history
 .lua_history
+cbor.lua
