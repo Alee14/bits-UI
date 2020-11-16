@@ -1,4 +1,7 @@
+local welcomeMessage = true
+
 if fs.exists("/boot/ccboot/boot.lua") then
+    if welcomeMessage == true then
     term.clear()
     term.setCursorPos(1,1)
     term.setBackgroundColor(colours.white)
@@ -8,6 +11,9 @@ if fs.exists("/boot/ccboot/boot.lua") then
     term.setBackgroundColor(colours.black)
     term.setTextColor(colours.white)
     shell.run("boot/ccboot/boot.lua");
+    else
+    shell.run("boot/ccboot/boot.lua");
+    end
 else
     term.clear()
     term.setCursorPos(1,1)
