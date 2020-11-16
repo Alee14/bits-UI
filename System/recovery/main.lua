@@ -19,10 +19,11 @@ term.setTextColor(colors.white)
 print("Welcome to the bits-UI recovery mode!")
 sleep(2)
 print("Do you want to either reset or transfer?")
+print("1 or 2")
 local input = read();
-if input == "reset" then
+if input == "1" then
     shell.run("/System/recovery/reset.lua")
-elseif input == "transfer" then
+elseif input == "2" then
     shell.run("/System/recovery/transfer.lua")
 else
     os.reboot()

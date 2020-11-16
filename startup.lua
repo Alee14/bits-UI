@@ -1,5 +1,13 @@
 if fs.exists("/boot/ccboot/boot.lua") then
-shell.run("boot/ccboot/boot.lua");
+    term.clear()
+    term.setCursorPos(1,1)
+    term.setBackgroundColor(colours.white)
+    term.setTextColor(colours.black)
+    print("Welcome to CCBoot!")
+    sleep(1)
+    term.setBackgroundColor(colours.black)
+    term.setTextColor(colours.white)
+    shell.run("boot/ccboot/boot.lua");
 else
     term.clear()
     term.setCursorPos(1,1)
