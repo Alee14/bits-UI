@@ -23,6 +23,15 @@ print("Starting up bits-UI ".. version .."...")
 
 print(_HOST)
 
+--[[
+if os.version == "CraftOS 1.8" then
+    print("[OK] Running on the latest version of CraftOS...")
+    sleep(2)
+else
+    print("You are not running CraftOS 1.8. Boot process halted.")
+    sleep(2)
+    os.shutdown()
+end]]--
 
 if term.isColor() then
     term.setTextColor(colors.green)

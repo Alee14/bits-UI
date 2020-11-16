@@ -13,11 +13,11 @@
     GNU General Public License for more details.
 ]]--
 
-os.loadAPI("/System/apis/flib.lua")
+os.require("/System/apis/flib.lua")
 local backgroundColour = 32768
 local backgroundImage = "/home/.background"
 local panelColour = 8192
-local appTitle = "[Apps]"
+local appTitle = "[Programs]"
 
 function drawPanel()  	
     local time = os.time()

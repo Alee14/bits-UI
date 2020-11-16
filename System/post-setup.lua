@@ -12,8 +12,8 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 ]]--
-os.loadAPI("/System/apis/sha256.lua")
-os.loadAPI("/System/apis/json.lua")
+os.require("/System/apis/sha256.lua")
+os.require("/System/apis/json.lua")
 local config = "/Home/.config"
 
 term.clear()
