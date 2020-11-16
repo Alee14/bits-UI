@@ -13,7 +13,7 @@
     GNU General Public License for more details.
 ]]--
 
-os.loadAPI("/system/apis/flib.lua")
+os.loadAPI("/System/apis/flib.lua")
 local backgroundColour = 32768
 local backgroundImage = "/home/.background"
 local panelColour = 8192

@@ -23,7 +23,7 @@ print("Are you sure you want to reset bits-UI? (y/n)")
 local input = read()
 if input == "y" then
     print("Erasing all user stored data...")
-    fs.delete("/home")
+    fs.delete("/Home")
     fs.delete("/etc/passwd.pwd")
     sleep(2)
     print("Erased all data...")

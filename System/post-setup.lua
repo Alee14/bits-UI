@@ -12,9 +12,9 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 ]]--
-os.loadAPI("/system/apis/sha256.lua")
-os.loadAPI("/system/apis/json.lua")
-local config = "/home/.config"
+os.loadAPI("/System/apis/sha256.lua")
+os.loadAPI("/System/apis/json.lua")
+local config = "/Home/.config"
 
 term.clear()
 term.setCursorPos(1,1)
@@ -22,7 +22,7 @@ term.setTextColor(colors.white)
 
 print("Welcome to the bits-UI Post Setup!")
 sleep(2)
-print("Please enter your password.")
+--[[print("Please enter your password.")
 --print("(Don't set your real password in servers.)")
 
 local passPath = "/etc/passwd.pwd"
@@ -40,25 +40,25 @@ end
 sleep(3)
 term.clear()
 term.setCursorPos(1,1)
-term.setTextColor(colors.white)
+term.setTextColor(colors.white)]]--
 print("Copying files to local user.")
 
-fs.makeDir("/home/Documents")
-fs.makeDir("/home/Downloads")
-fs.makeDir("/home/Pictures")
+fs.makeDir("/Home/Documents")
+fs.makeDir("/Home/Downloads")
+fs.makeDir("/Home/Pictures")
 
-if fs.exists("/system/skel/README.txt") then
-    shell.run("copy", "/system/skel/README.txt", "/home/Documents")
+if fs.exists("/System/skel/README.txt") then
+    shell.run("copy", "/System/skel/README.txt", "/Home/Documents")
 else
     print("[ERROR] Unable to find README.txt...")
 end
 
-if fs.exists("/system/skel/.background") then
-    shell.run("copy", "/system/skel/.background", "/home")
+if fs.exists("/System/skel/.background") then
+    shell.run("copy", "/System/skel/.background", "/Home")
 else
     print("[ERROR] Unable to find the background...")
 end
 sleep(1)
 print("Finished copying files.")
 sleep(2)
-shell.run("/system/desktop.lua")
+shell.run("/System/desktop.lua")

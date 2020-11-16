@@ -21,9 +21,9 @@ sleep(2)
 print("Do you want to either reset or transfer?")
 local input = read();
 if input == "reset" then
-    shell.run("/system/recovery/reset.lua")
+    shell.run("/System/recovery/reset.lua")
 elseif input == "transfer" then
-    shell.run("/system/recovery/transfer.lua")
+    shell.run("/System/recovery/transfer.lua")
 else
     os.reboot()
 end
