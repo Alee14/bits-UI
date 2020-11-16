@@ -60,5 +60,16 @@ else
 end
 sleep(1)
 print("Finished copying files.")
+sleep(0.1)
+print("Do you want to set a label? (y/n)")
+local input = read()
+if input == "y" then
+    print("Pick your label for your computer:")
+    local labelInput = read()
+    os.setComputerLabel(labelInput)
+else
+    print("Skipping label change...")
+end
+
 sleep(2)
 shell.run("/System/desktop.lua")
