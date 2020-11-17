@@ -20,7 +20,7 @@ term.clear()
 term.setCursorPos(1,1)
 
 print("Starting up bits-UI ".. version .."...")
-
+term.setTextColor(colours.yellow)
 print(_HOST)
 
 --[[
@@ -42,7 +42,7 @@ else
     os.shutdown()
 end
 
-
+ 
 if fs.exists(desktop) then
     term.setTextColor(colors.green)
     print("[OK] Desktop has been found...")

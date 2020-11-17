@@ -18,6 +18,7 @@ local backgroundColour = 32768
 local backgroundImage = "/home/.background"
 local panelColour = 8192
 local appTitle = "[Programs]"
+local w, h = term.getSize();
 
 function drawPanel()  	
     local time = os.time()
@@ -38,6 +39,10 @@ function drawDesktop()
     bground = paintutils.loadImage(backgroundImage)
     paintutils.drawImage(bground,1,1)
     drawPanel()
+    term.setCursorPos(1,17)
+    term.setBackgroundColor(colours.black)
+    write("bits-UI 1.0 Alpha 2\n")
+    write("Licensed with GPL-3.0")
 end
 --[[
     if fs.exists("/programs") then

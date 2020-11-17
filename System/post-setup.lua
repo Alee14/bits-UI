@@ -23,7 +23,7 @@ term.setTextColor(colors.white)
 print("Welcome to the bits-UI Post Setup!")
 sleep(2)
 --[[print("Please enter your password.")
---print("(Don't set your real password in servers.)")
+print("(Don't set your real password in Minecraft Servers!)")
 
 local passPath = "/etc/passwd.pwd"
 if fs.exists(passPath) then
