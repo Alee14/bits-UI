@@ -20,9 +20,9 @@ else
     gitMode = false
 end
 if gitMode == true then
-    print("NOTICE: Git mode is set to true!\n\nWhich means that you cannot update, you must use Git to update.\n")
-    print("Args: \"git pull\"")
-    sleep(2)
+    print("NOTICE: A git folder has been found...\n\nWhich means that you cannot use the built-in updater, you must use Git to update.\n")
+    print("Command for updating via git: \"git pull\"")
+    sleep(5)
     os.reboot()
 else
 print("Running the updater...")
